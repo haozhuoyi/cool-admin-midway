@@ -1,4 +1,4 @@
-import { BaseEntity } from '../../base/entity/base';
+import { BaseEntity, transformerJson } from '../../base/entity/base';
 import { Column, Entity } from 'typeorm';
 
 /**
@@ -12,9 +12,19 @@ export class DeviceInfoEntity extends BaseEntity {
   @Column({ comment: '设备名称', nullable: true })
   name: string;
 
-  @Column({ comment: '租户信息', nullable: true })
-  zuhuId: number;
+  @Column({
+    comment: '租户ID',
+    nullable: true,
+    type: 'json',
+    transformer: transformerJson,
+  })
+  zuhuId: string[];
 
-  @Column({ comment: '订单编号', nullable: true })
-  dingdanId: number;
+  @Column({
+    comment: '订单编号',
+    nullable: true,
+    type: 'json',
+    transformer: transformerJson,
+  })
+  dingdanId: string[];
 } 

@@ -15,6 +15,12 @@ export class DingdanSonService extends BaseService {
 
   @InjectEntityModel(DingdanInfoEntity)
   dingdanInfoEntity: Repository<DingdanInfoEntity>;
+
+  async init() {
+    // 设置操作实体
+    this.entity = this.dingdanSonEntity;
+    await super.init();
+  }
   
   /**
    * 创建子订单

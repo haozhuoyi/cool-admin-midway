@@ -1,4 +1,4 @@
-import { BaseEntity } from '../../base/entity/base';
+import { BaseEntity, transformerJson } from '../../base/entity/base';
 import { Column, Entity } from 'typeorm';
 
 /**
@@ -6,11 +6,21 @@ import { Column, Entity } from 'typeorm';
  */
 @Entity('dingdan_info')
 export class DingdanInfoEntity extends BaseEntity {
-  @Column({ comment: '租户ID', nullable: true })
-  zuhuId: number;
+  @Column({
+    comment: '名下租户',
+    nullable: true,
+    type: 'json',
+    transformer: transformerJson,
+  })
+  zuhuId: string[];
 
-  @Column({ comment: '设备ID', nullable: true })
-  deviceId: number;
+  @Column({
+    comment: '设备ID',
+    nullable: true,
+    type: 'json',
+    transformer: transformerJson,
+  })
+  deviceId: string[];
 
   @Column({ comment: '订单时间', type: 'datetime', nullable: true })
   datetime: Date;

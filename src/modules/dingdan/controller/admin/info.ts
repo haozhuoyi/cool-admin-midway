@@ -11,7 +11,7 @@ import { Get, Inject } from '@midwayjs/core';
   entity: DingdanInfoEntity,
   service: DingdanInfoService,
   pageQueryOp: {
-    fieldEq: ['status', 'zuhuId', 'deviceId'],
+    // fieldEq: ['status', 'zuhuId', 'deviceId'],
     keyWordLikeFields: ['ori', 'taocanType'],
     addOrderBy: {
       id: 'DESC'

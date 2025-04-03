@@ -18,11 +18,11 @@ import { Get, Inject, Post, Body } from '@midwayjs/core';
     }
   },
   // 在添加前执行的动作
-  before: async (ctx) => {
+  before: async (ctx,app) => {
     // 如果是添加操作，检查手机号和身份证号是否已存在
     if (ctx.method === 'POST' && ctx.path.endsWith('/add')) {
       const body = ctx.request.body;
-      const service = ctx.requestContext.getAsync('zuhuInfoService');
+      const service = await ctx.requestContext.getAsync(ZuhuInfoService);
       
       // 检查手机号和身份证号是否已存在
       const checkResult = await service.checkExists({
